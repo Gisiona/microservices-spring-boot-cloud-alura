@@ -31,4 +31,7 @@ public class InfoFornecedor implements Serializable {
 	
 	@Column(name = "estado")
 	private String estado;
+	
+	@Column(name = "idEndereco")
+	private Long idEndereco;
 }
