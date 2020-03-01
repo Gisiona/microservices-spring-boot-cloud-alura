@@ -1,41 +1,45 @@
 package br.com.microservice.loja.processor;
 
-import org.springframework.http.ResponseEntity;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
-import br.com.microservice.loja.dto.CompraDTO;
+import br.com.microservice.loja.converter.Converters;
+import br.com.microservice.loja.dto.CompraRequestDTO;
 import br.com.microservice.loja.dto.InfoFornecedorDTO;
 import br.com.microservice.loja.dto.response.CompraResponse;
+import br.com.microservice.loja.exception.FornecedorHttpClientException;
 import br.com.microservice.loja.mapper.CompraMapper;
 import br.com.microservice.loja.service.CompraService;
 
 @Component
 public class CompraProcessor {
 
+	@Autowired
 	private CompraService compraService;
 	private CompraMapper compraMapper;
 	
 	
-	public CompraResponse realizarCompra(CompraDTO compra) throws JsonProcessingException {
+	public CompraResponse realizarCompra(CompraRequestDTO compra) throws JsonProcessingException {
 		
-		compraMapper = new CompraMapper();
-		compraService = new CompraService();
-		
-		String comp = convertObjectToJson(compra);
+		compraMapper = new CompraMapper();		
+		String comp = Converters.convertObjectToJson(compra);
 		System.out.print(comp);
-		ResponseEntity<InfoFornecedorDTO> responseInfoFornecedor = compraService.realizarCompra(compra);
-		CompraResponse response = compraMapper.mapper(responseInfoFornecedor.getBody());
+		Object retorno = compraService.realizarCompra(compra);
+		return null;
+	}
+
+
+	public List<InfoFornecedorDTO> buscarFornecedoresPorEstado(String estado) throws Throwable   {
+		List<InfoFornecedorDTO> response = compraService.buscarFornecedoresPorEstado(estado);
 		return response;
 	}
 
-	private String convertObjectToJson(Object obj) throws JsonProcessingException {
-		 //Creating the ObjectMapper object
-	      ObjectMapper mapper = new ObjectMapper();
-	      //Converting the Object to JSONString
-	      String jsonString = mapper.writeValueAsString(obj);
-	      return jsonString;
+	public InfoFornecedorDTO listaFornecedorPorId(Long id) throws FornecedorHttpClientException {
+		InfoFornecedorDTO response = compraService.buscarFornecedorPorId(id);
+		return response;
 	}
 }

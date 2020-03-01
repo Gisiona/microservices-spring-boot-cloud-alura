@@ -18,9 +18,17 @@ public class InfoFornecedorController {
 	@Autowired
 	private InfoFornecedorProcessor infoFornecedorProcessor;
 	
-	@GetMapping("/info/{estado}")
+	@GetMapping("/all/{estado}")
 	public List<InfoFornecedor> buscarFornecedorPorEstado(@PathVariable String estado) {	
 		List<InfoFornecedor> fornecedores = infoFornecedorProcessor.buscarFornecedorPorEstado(estado);
 		return fornecedores;
 	}
+	
+	@GetMapping("/info/{id}")
+	public InfoFornecedor buscarFornecedorPorId(@PathVariable Long id) {	
+		InfoFornecedor fornecedor = infoFornecedorProcessor.buscarFornecedorPorId(id);
+		return fornecedor;
+	}
+	
+	
 }

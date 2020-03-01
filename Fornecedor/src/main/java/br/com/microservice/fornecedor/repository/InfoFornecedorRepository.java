@@ -10,4 +10,5 @@ import br.com.microservice.fornecedor.entity.InfoFornecedor;
 @Repository
 public interface InfoFornecedorRepository extends JpaRepository<InfoFornecedor, Long>  {
 	List<InfoFornecedor> findByEstado(String estado);
+	InfoFornecedor findByIdFornecedor(Long id);
 }

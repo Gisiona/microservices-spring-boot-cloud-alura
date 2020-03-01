@@ -9,7 +9,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter @AllArgsConstructor
-public class CompraDTO {
+public class CompraRequestDTO {
 
 	@JsonProperty("data_compra")
 	private LocalDateTime dataCompra;

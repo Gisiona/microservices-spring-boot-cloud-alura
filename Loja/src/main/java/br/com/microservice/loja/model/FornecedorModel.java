@@ -1,11 +1,26 @@
-package br.com.microservice.loja.dto;
+package br.com.microservice.loja.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class InfoFornecedorDTO{
-	
-	@JsonProperty("id_fornecedor")
+public class FornecedorModel {
+
+	@JsonProperty("idFornecedor")
 	private Long idFornecedor;
+
+	@JsonProperty("telefone")
+	private String telefone;
+	
+	@JsonProperty("email")
+	private String email;
+	
+	@JsonProperty("pessoaContato")
+	private String pessoaContato;
+	
+	@JsonProperty("estado")
+	private String estado;
+	
+	@JsonProperty("idEndereco")
+	private Long idEndereco;
 	
 	public Long getIdFornecedor() {
 		return idFornecedor;
@@ -52,35 +67,6 @@ public class InfoFornecedorDTO{
 	}
 
 	public void setIdEndereco(Long idEndereco) {
-		this.idEndereco = idEndereco;
-	}
-
-	@JsonProperty("telefone")
-	private String telefone;
-	
-	@JsonProperty("email")
-	private String email;
-	
-	@JsonProperty("pessoa_contato")
-	private String pessoaContato;
-	
-	@JsonProperty("estado")
-	private String estado;
-	
-	@JsonProperty("id_endereco")
-	private Long idEndereco;
-	
-	public InfoFornecedorDTO(Long idFornecedor, 
-			String telefone,
-			String email,
-			String pessoaContato,
-			String estado,
-			Long idEndereco) {
-		this.idFornecedor = idFornecedor;
-		this.telefone = telefone;
-		this.email = email;
-		this.pessoaContato = pessoaContato;
-		this.estado = estado;
 		this.idEndereco = idEndereco;
 	}
 }
