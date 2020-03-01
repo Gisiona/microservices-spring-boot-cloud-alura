@@ -26,9 +26,8 @@ public class FornecedorMapper {
 
 
 	public static List<InfoFornecedorDTO> toMapper(Object body) throws JsonProcessingException {
-	
-		String json = Converters.convertObjectToJson(body);
-		List<FornecedorModel> fornecedores = convertJsonToArrayObject(json);
+
+		List<FornecedorModel> fornecedores = convertJsonToArrayObject(Converters.convertObjectToJson(body));
 		List<InfoFornecedorDTO> response = new ArrayList<InfoFornecedorDTO>();
 		InfoFornecedorDTO dto = null;
 		
@@ -45,11 +44,11 @@ public class FornecedorMapper {
 		return response;
 	}
 	
-	public static List<FornecedorModel>  convertJsonToArrayObject(String obj) throws JsonProcessingException {
-		TypeReference<List<FornecedorModel>> typeRef = new TypeReference<List<FornecedorModel>>() { };
-	     ObjectMapper mapper = new ObjectMapper();
-	     List<FornecedorModel> list = mapper.readValue(obj, typeRef);	     
-	     return list;
+	public static List<FornecedorModel>  convertJsonToArrayObject(String jsonString) throws JsonProcessingException {
+	     TypeReference<List<FornecedorModel>> typeRef = new TypeReference<List<FornecedorModel>>() { };
+         ObjectMapper mapper = new ObjectMapper();
+         List<FornecedorModel> list = mapper.readValue(jsonString, typeRef);
+         return list;
 	}
 
 }

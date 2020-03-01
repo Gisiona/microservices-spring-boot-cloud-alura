@@ -25,12 +25,8 @@ import br.com.microservice.loja.processor.CompraProcessor;
 @RequestMapping("/api/v1/loja")
 public class CompraController {
 	
-	private CompraProcessor compraProcessor;
-	
 	@Autowired
-	public CompraController(CompraProcessor _compraProcessor) {
-		this.compraProcessor = _compraProcessor;
-	}
+	private CompraProcessor compraProcessor;
 	
 	@PostMapping("/compra")
 	public ResponseEntity<DataResponse<CompraResponse>> realizarCompra(@RequestBody CompraRequestDTO compra) throws JsonProcessingException

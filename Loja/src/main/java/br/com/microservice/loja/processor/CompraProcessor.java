@@ -20,12 +20,13 @@ public class CompraProcessor {
 
 	@Autowired
 	private CompraService compraService;
-	private CompraMapper compraMapper;
 	
+	@Autowired
+	private CompraMapper compraMapper;
 	
 	public CompraResponse realizarCompra(CompraRequestDTO compra) throws JsonProcessingException {
 		
-		compraMapper = new CompraMapper();		
+		//compraMapper = new CompraMapper();		
 		String comp = Converters.convertObjectToJson(compra);
 		System.out.print(comp);
 		Object retorno = compraService.realizarCompra(compra);
