@@ -64,7 +64,7 @@ public class CompraService {
 										FornecedorModel.class);
 			
 		 return response.hasBody() ? FornecedorMapper.toMapper(response.getBody()) : null;
-		
+
 		} catch (HttpClientErrorException  e) {
 			throw new FornecedorHttpClientException(e.getMessage(),e.getRawStatusCode());
 		}		

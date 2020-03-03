@@ -7,6 +7,21 @@ public class InfoFornecedorDTO{
 	@JsonProperty("id_fornecedor")
 	private Long idFornecedor;
 	
+	@JsonProperty("telefone")
+	private String telefone;
+	
+	@JsonProperty("email")
+	private String email;
+	
+	@JsonProperty("pessoa_contato")
+	private String pessoaContato;
+	
+	@JsonProperty("estado")
+	private String estado;
+	
+	@JsonProperty("id_endereco")
+	private Long idEndereco;
+	
 	public Long getIdFornecedor() {
 		return idFornecedor;
 	}
@@ -54,21 +69,6 @@ public class InfoFornecedorDTO{
 	public void setIdEndereco(Long idEndereco) {
 		this.idEndereco = idEndereco;
 	}
-
-	@JsonProperty("telefone")
-	private String telefone;
-	
-	@JsonProperty("email")
-	private String email;
-	
-	@JsonProperty("pessoa_contato")
-	private String pessoaContato;
-	
-	@JsonProperty("estado")
-	private String estado;
-	
-	@JsonProperty("id_endereco")
-	private Long idEndereco;
 	
 	public InfoFornecedorDTO(Long idFornecedor, 
 			String telefone,
