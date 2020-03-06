@@ -5,10 +5,9 @@ server:
 spring:
   application:
     name: config-server
-  profiles:
-    active: native
   cloud:
     config:
       server:
-        native:
-          search-locations: D:\workarea\projetos\mocroservice-repositorio-config-server
+        git:
+          uri: https://github.com/Gisiona/microservices-spring-boot-cloud-repo-config-server
+          search-paths: fornecedor
