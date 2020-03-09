@@ -46,7 +46,7 @@ public class FornecedorMapper {
 	
 	public static List<FornecedorModel>  convertJsonToArrayObject(String jsonString) throws JsonProcessingException {
 	     TypeReference<List<FornecedorModel>> typeRef = new TypeReference<List<FornecedorModel>>() { };
-         ObjectMapper mapper = new ObjectMapper();
+         ObjectMapper mapper = new ObjectMapper();         
          List<FornecedorModel> list = mapper.readValue(jsonString, typeRef);
          return list;
 	}

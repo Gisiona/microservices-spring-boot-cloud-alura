@@ -14,12 +14,16 @@ import br.com.microservice.loja.dto.response.CompraResponse;
 import br.com.microservice.loja.exception.FornecedorHttpClientException;
 import br.com.microservice.loja.mapper.CompraMapper;
 import br.com.microservice.loja.service.CompraService;
+import br.com.microservice.loja.service.FornecedorService;
 
 @Component
 public class CompraProcessor {
 
 	@Autowired
 	private CompraService compraService;
+		
+	@Autowired
+	private FornecedorService fornecedorService;
 	
 	@Autowired
 	private CompraMapper compraMapper;
@@ -35,7 +39,7 @@ public class CompraProcessor {
 
 
 	public List<InfoFornecedorDTO> buscarFornecedoresPorEstado(String estado) throws Throwable   {
-		List<InfoFornecedorDTO> response = compraService.buscarFornecedoresPorEstado(estado);
+		List<InfoFornecedorDTO> response = fornecedorService.buscarFornecedoresPorEstado(estado);
 		return response;
 	}
 
