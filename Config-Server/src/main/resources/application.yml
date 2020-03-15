@@ -9,5 +9,5 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/Gisiona/microservices-spring-boot-cloud-repo-config-server
+          uri: https://github.com/Gisiona/spring-boot-cloud-microservices-repository-config-server
           search-paths: fornecedor

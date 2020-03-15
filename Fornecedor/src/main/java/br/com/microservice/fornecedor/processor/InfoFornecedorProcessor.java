@@ -6,7 +6,11 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import br.com.microservice.fornecedor.dto.InfoFornecedorDto;
+import br.com.microservice.fornecedor.entity.Endereco;
 import br.com.microservice.fornecedor.entity.InfoFornecedor;
+import br.com.microservice.fornecedor.mapper.FornecedorMapper;
+import br.com.microservice.fornecedor.repository.EnderecoRepository;
 import br.com.microservice.fornecedor.repository.InfoFornecedorRepository;
 
 @Component
@@ -15,8 +19,20 @@ public class InfoFornecedorProcessor {
 	@Autowired
 	private InfoFornecedorRepository infoFornecedorRepository;
 	
-	public List<InfoFornecedor> buscarFornecedorPorEstado(String estado) {
-		return infoFornecedorRepository.findAll();
+	@Autowired
+	private EnderecoRepository enderecoRepository;
+	
+	@Autowired
+	private FornecedorMapper fornecedorMapper;
+	
+	public List<InfoFornecedorDto> buscarFornecedorPorEstado(String estado) {
+		List<InfoFornecedor> fornecedores = infoFornecedorRepository.findAll();
+		
+		List<InfoFornecedorDto> dtos = fornecedorMapper.from(fornecedores);
+		
+		Optional<Endereco> endereco = enderecoRepository.findById(fornecedores.get(0).getIdEndereco());
+		
+		return dtos;
 	}
 
 	public InfoFornecedor buscarFornecedorPorId(Long id) {

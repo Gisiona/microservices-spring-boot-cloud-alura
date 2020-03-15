@@ -12,6 +12,26 @@ import javax.persistence.Table;
 @Entity @Table(name = "fornecedor")
 public class InfoFornecedor implements Serializable {
    
+	@Id 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_fornecedor")
+	private Long idFornecedor;
+	
+	@Column(name = "telefone")
+	private String telefone;
+	
+	@Column(name = "email")
+	private String email;
+	
+	@Column(name = "pessoa_contato")
+	private String pessoaContato;
+	
+	@Column(name = "estado")
+	private String estado;
+	
+	@Column(name = "id_endereco")
+	private Long idEndereco;
+	
 	public Long getIdFornecedor() {
 		return idFornecedor;
 	}
@@ -59,24 +79,4 @@ public class InfoFornecedor implements Serializable {
 	public void setIdEndereco(Long idEndereco) {
 		this.idEndereco = idEndereco;
 	}
-
-	@Id 
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private Long idFornecedor;
-	
-	@Column(name = "telefone")
-	private String telefone;
-	
-	@Column(name = "email")
-	private String email;
-	
-	@Column(name = "pessoa_ontato")
-	private String pessoaContato;
-	
-	@Column(name = "estado")
-	private String estado;
-	
-	@Column(name = "idEndereco")
-	private Long idEndereco;
 }
