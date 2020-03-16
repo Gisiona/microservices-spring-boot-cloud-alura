@@ -1,7 +1,5 @@
 package br.com.microservice.fornecedor.entity;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,10 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity @Table(name = "fornecedor")
-public class InfoFornecedor implements Serializable {
+public class InfoFornecedor {
    
 	@Id 
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_fornecedor")
 	private Long idFornecedor;
 	
@@ -28,7 +26,7 @@ public class InfoFornecedor implements Serializable {
 	
 	@Column(name = "estado")
 	private String estado;
-	
+		
 	@Column(name = "id_endereco")
 	private Long idEndereco;
 	

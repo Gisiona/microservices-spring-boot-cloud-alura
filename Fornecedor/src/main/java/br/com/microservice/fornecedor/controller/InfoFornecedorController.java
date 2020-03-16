@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.microservice.fornecedor.dto.InfoFornecedorDto;
 import br.com.microservice.fornecedor.dto.response.DataResponse;
-import br.com.microservice.fornecedor.entity.InfoFornecedor;
 import br.com.microservice.fornecedor.processor.InfoFornecedorProcessor;
 
 @RestController
@@ -29,10 +28,9 @@ public class InfoFornecedorController {
 	}
 	
 	@GetMapping("/info/{id}")
-	public ResponseEntity<DataResponse<InfoFornecedor>> buscarFornecedorPorId(@PathVariable Long id) {	
-		InfoFornecedor fornecedor = infoFornecedorProcessor.buscarFornecedorPorId(id);
-		return ResponseEntity.status(HttpStatus.OK).body(new DataResponse (fornecedor));
-	}
-	
+	public InfoFornecedorDto buscarFornecedorPorId(@PathVariable Long id) {	
+		InfoFornecedorDto fornecedor = infoFornecedorProcessor.buscarFornecedorPorId(id);
+		return fornecedor;
+	}	
 	
 }

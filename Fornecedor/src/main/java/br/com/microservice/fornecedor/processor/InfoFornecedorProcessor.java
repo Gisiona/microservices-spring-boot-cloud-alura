@@ -26,17 +26,18 @@ public class InfoFornecedorProcessor {
 	private FornecedorMapper fornecedorMapper;
 	
 	public List<InfoFornecedorDto> buscarFornecedorPorEstado(String estado) {
-		List<InfoFornecedor> fornecedores = infoFornecedorRepository.findAll();
-		
-		List<InfoFornecedorDto> dtos = fornecedorMapper.from(fornecedores);
-		
-		Optional<Endereco> endereco = enderecoRepository.findById(fornecedores.get(0).getIdEndereco());
-		
+		List<InfoFornecedor> fornecedores = infoFornecedorRepository.findAll();		
+		Optional<Endereco> endereco = enderecoRepository.findById(fornecedores.get(0).getIdEndereco());		
+		List<InfoFornecedorDto> dtos = fornecedorMapper.from(fornecedores, endereco.get());
+				
 		return dtos;
 	}
 
-	public InfoFornecedor buscarFornecedorPorId(Long id) {
+	public InfoFornecedorDto buscarFornecedorPorId(Long id) {
 		Optional<InfoFornecedor> response = infoFornecedorRepository.findById(id);
-		return response.get();
+		Optional<Endereco> endereco = enderecoRepository.findById(response.get().getIdEndereco());
+		InfoFornecedorDto dto = fornecedorMapper.from(response.get(), endereco.get());
+		
+		return dto;
 	}
 }

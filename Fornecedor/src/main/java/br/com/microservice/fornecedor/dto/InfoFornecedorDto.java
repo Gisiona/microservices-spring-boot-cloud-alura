@@ -1,10 +1,12 @@
 package br.com.microservice.fornecedor.dto;
 
+import java.io.Serializable;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import br.com.microservice.fornecedor.entity.Endereco;
 
-public class InfoFornecedorDto {
+public class InfoFornecedorDto implements Serializable {
 	
 	@JsonProperty("id_fornecedor")
 	private String idFornecedor;
@@ -18,6 +20,9 @@ public class InfoFornecedorDto {
 	@JsonProperty("pessoa_contato")
 	private String pessoaContato;
 		
+	@JsonProperty("id_endereco")
+	private String idEndereco;
+	
 	@JsonProperty("endereco")
 	private Endereco endereco;
 	
@@ -61,4 +66,11 @@ public class InfoFornecedorDto {
 		this.endereco = endereco;
 	}
 
+	public String getIdEndereco() {
+		return idEndereco;
+	}
+
+	public void setIdEndereco(String idEndereco) {
+		this.idEndereco = idEndereco;
+	}
 }

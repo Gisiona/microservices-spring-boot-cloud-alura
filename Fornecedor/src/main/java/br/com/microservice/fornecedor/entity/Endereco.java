@@ -1,5 +1,7 @@
 package br.com.microservice.fornecedor.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,10 +13,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter @Entity @Table(name = "endereco")
-public abstract class Endereco {
+public class Endereco implements Serializable {
 
 	@Id 
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_endereco")
 	private Long idEndereco;
 	
